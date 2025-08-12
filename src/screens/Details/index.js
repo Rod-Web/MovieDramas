@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
 import { View, Text, Image, StyleSheet } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
+import Stars from 'react-native-stars';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+ 
+
+
 export default function Detalhes() {
     const routes   = useRoute()
 
@@ -38,7 +43,22 @@ export default function Detalhes() {
     <View style={styles.container}>
         <Text style={styles.titulo}>{routes.params.titulo}</Text>
         <Image style={styles.imagem} source={{ uri: routes.params.imagem }} />
-        <Text style={styles.nota}>Nota: {routes.params.nota}</Text>
+        <View style={{alignItems:'center'}}>
+          <Stars
+            default={routes.params.nota}
+            count={5}
+            half={true}
+            starSize={70}
+            disabled={true}  // impede que o usuário interaja
+            fullStar={<Icon name={'star'} style={[styles.myStarStyle]}/>}
+            emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
+            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
+          />
+
+        </View>
+ 
+        <Text style={styles.nota}>{routes.params.nota}/5</Text>
+        <Text style={styles.descricao}>Descrição: {routes.params.descricao}</Text>
     </View>
   );
 }
@@ -48,6 +68,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: "#f0f0f5",
+  },
+
+  myStarStyle: {
+    color: 'yellow',
+    backgroundColor: 'transparent',
+    textShadowColor: 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+  },
+  myEmptyStarStyle: {
+    color: 'white',
   },
 
   imagem: {
@@ -63,6 +94,10 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   nota: {
+    fontSize: 16,
+    color: "#666",
+  },
+  descricao: {
     fontSize: 16,
     color: "#666",
   },
