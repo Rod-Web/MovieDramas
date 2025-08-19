@@ -43,9 +43,9 @@ export default function Detalhes() {
     <View style={styles.container}>
         <Text style={styles.titulo}>{routes.params.titulo}</Text>
         <Image style={styles.imagem} source={{ uri: routes.params.imagem }} />
-        <View style={{alignItems:'center'}}>
+        <View style={{alignItems:'center', display:'flex', gap: 5, flexDirection:'row'}}>
           <Stars
-            default={routes.params.nota}
+            default={parseFloat(routes.params.nota)}
             count={5}
             half={true}
             starSize={70}
@@ -55,10 +55,10 @@ export default function Detalhes() {
             halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
           />
 
+          <Text style={styles.nota}>{routes.params.nota}/5</Text>
         </View>
  
-        <Text style={styles.nota}>{routes.params.nota}/5</Text>
-        <Text style={styles.descricao}>Descrição: {routes.params.descricao}</Text>
+        <Text style={styles.descricao}>{routes.params.descricao}</Text>
     </View>
   );
 }
@@ -67,13 +67,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: "#f0f0f5",
+    backgroundColor: "black",
   },
 
   myStarStyle: {
+    fontSize: 16,
     color: 'yellow',
     backgroundColor: 'transparent',
-    textShadowColor: 'black',
+    textShadowColor: 'white',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
@@ -89,16 +90,22 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontFamily: 'bold', 
-    fontSize: 20,
+    fontSize: 28,
+    margin: 10,
+    color: 'white',
     fontWeight: "bold",
-    marginBottom: 4,
+    marginBottom: 10,
   },
   nota: {
     fontSize: 16,
-    color: "#666",
+    color: "white",
   },
   descricao: {
-    fontSize: 16,
-    color: "#666",
+    border: '1px solid grey',
+    margin: 6,
+    fontSize: 18,
+    color: "white",
+    padding: 20,
+    textAlign: 'justify',
   },
 });
