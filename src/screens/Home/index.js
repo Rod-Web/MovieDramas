@@ -5,8 +5,32 @@ import CardMovies from "../../components/cardMovies/index.js";
 import BannerFilmes from "../../components/bannerFilmes/index.js";
 import data from "../../data/database.js"
 
+import { useState, useEffect } from "react";
+
+
+
+
 export default function Home(){
-    return(
+   
+  const [filmes,setFilmes] = useState(['']);
+
+
+  useEffect( ()=>{
+
+
+    async function buscarFilmes() {
+      
+    }
+
+
+
+  },[] )
+
+
+
+  
+  
+  return(
   <View style = {styles.container}>
 
     <Header></Header>
