@@ -11,7 +11,7 @@ export default function CardMovies({titulo, imagem, nota, descricao }){
             <TouchableOpacity style={styles.containerJogos} onPress={()=> navigation.navigate('Detalhes', {titulo, imagem, nota, descricao})} >
                 <Image style={styles.images} source={{uri: imagem}} />
                 <Text style={styles.titulo}> {titulo} </Text>
-                <Text style={styles.textNota}> {nota} </Text>
+                <Text style={styles.textNota}>Nota: {nota} </Text>
             </TouchableOpacity>
 
     )

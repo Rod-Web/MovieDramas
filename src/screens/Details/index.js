@@ -46,7 +46,7 @@ export default function Detalhes() {
         <View style={{alignItems:'center', display:'flex', gap: 5, flexDirection:'row'}}>
           <Stars
             default={parseFloat(routes.params.nota)}
-            count={5}
+            count={10}
             half={true}
             starSize={70}
             disabled={true}  // impede que o usuário interaja
@@ -55,7 +55,7 @@ export default function Detalhes() {
             halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
           />
 
-          <Text style={styles.nota}>{routes.params.nota}/5</Text>
+          <Text style={styles.nota}>{routes.params.nota}/10</Text>
         </View>
  
         <Text style={styles.descricao}>{routes.params.descricao}</Text>

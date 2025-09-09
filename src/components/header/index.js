@@ -8,13 +8,13 @@ export default function Header(){
     return(
         <View style = {estilo.viewHeader}>
 
-            <TouchableOpacity>
+            <TouchableOpacity >
 
-                <Feather style = {{marginLeft: -70}} name = "menu" size= {36} color= "#FFF" />
+                <Feather  name = "menu" size= {36} color= "#FFF" />
 
             </TouchableOpacity>
 
-            <Text style = {estilo.textHeader}> K DRAMAS</Text>
+            <Text style = {estilo.textHeader}> Catalogo Movies</Text>
         </View>
     )
 }

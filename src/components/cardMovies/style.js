@@ -15,13 +15,13 @@ containerJogos:{
 titulo:{
     color:'#fff',
     fontSize:12,
-    paddingTop:8
+    paddingTop:8,
 },
  
 textNota:{
     fontSize:10,
     color: '#fff',
-    paddingLeft:4
+    paddingLeft:4,
 },
  
 images:{
