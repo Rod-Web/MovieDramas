@@ -74,8 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'yellow',
     backgroundColor: 'transparent',
-    textShadowColor: 'white',
-    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
   myEmptyStarStyle: {

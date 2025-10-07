@@ -13,6 +13,31 @@ import { useState, useEffect } from "react";
 export default function Home(){
    
   const [movies,setMovies] = useState([]);
+  const [movies2, setMovies2] = useState([]);
+
+  useEffect(()=>{
+  
+    async function buscarFilmes(){
+        const url = 'https://api.themoviedb.org/3/tv/popular?language=pt-BR&page=1';
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTY1ODBkZjlkMDRiMjE1MWQ1ZDZiYzZkYWQxYTZiYSIsIm5iZiI6MTc1NjIyNzQ2MS45OTgwMDAxLCJzdWIiOiI2OGFkZTc4NTJmNWM0YTExMmNmMzhkY2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0._vsE_Rq-WsV7vlSG1SNb5FxkuJ-41ZKF7gsAw2tm2XA'
+          }
+        };
+
+        const response = await fetch(url,options);
+        const data = await response.json();
+
+        console.log(data);
+        setMovies2(data.results)
+    }
+
+    buscarFilmes();
+    
+}, [] )
+
 
   useEffect(()=>{
   
@@ -48,8 +73,9 @@ export default function Home(){
     <BannerFilmes></BannerFilmes>
 
     <View style={{width: '90%'}}>
+    <h2 style={{color: 'white'}}>Filmes Populares</h2>
 
-      <FlatList
+    <FlatList
       data={movies} // busca 
       horizontal = {true}
       keyExtractor={(item) => item.id}
@@ -58,7 +84,22 @@ export default function Home(){
        
         <CardMovies titulo={item.title} imagem={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} nota={item.vote_average.toFixed(2)} descricao={item.overview}></CardMovies>
       )}
-      />
+
+
+    />      
+    <h2 style={{color: 'white'}}>Séries Populares</h2>
+    <FlatList
+      data={movies2} // busca 
+      horizontal = {true}
+      keyExtractor={(item) => item.id}
+
+      renderItem={({item}) => (
+       
+        <CardMovies titulo={item.name} imagem={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} nota={item.vote_average.toFixed(2)} descricao={item.overview}></CardMovies>
+      )}
+
+
+    />
 
     </View>
     
@@ -71,10 +112,11 @@ const styles = StyleSheet.create({
 
   container:{
     display:'flex',
+    overflowY: 'scroll',
     alignItems:'center',
     backgroundColor:'black',
-    
-    flex:1
+
+    flex:1  
   }
 
 
