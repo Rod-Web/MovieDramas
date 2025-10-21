@@ -1,109 +1,108 @@
-/*
-import { View, Text, Image, StyleSheet } from "react-native";
-import { useRoute } from "@react-navigation/native";
+  import { View, Text, Image, StyleSheet } from "react-native";
+  import { useRoute } from "@react-navigation/native";
 
-export default function Detalhes(){
-    
-    const route = useRoute()
-    return(
-        <View>
-            <Text  style={styles.titulo}>{route.params.titulo} </Text>
-            <Image style={styles.images} source ={{uri: route.params.imagem}} />
-            <Text  style={styles.notas}> Nota: {route.params.nota}</Text>
-        </View>
-    )
-
-}
-const styles = StyleSheet.create({
-    images:{
-        width: '50%',
-        height:170,
-        borderRadius: 8
-     
-    }
-})
-    */
+  import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+  import { Ionicons } from "@expo/vector-icons";
 
 
 
-
-import { View, Text, Image, StyleSheet } from "react-native";
-import { useRoute } from "@react-navigation/native";
-
-import Stars from 'react-native-stars';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
- 
+  export default function Detalhes() {
+      const routes   = useRoute()
 
 
-export default function Detalhes() {
-    const routes   = useRoute()
-
-
-  return (
-    <View style={styles.container}>
+    return (
+      <View style={styles.container}>
         <Text style={styles.titulo}>{routes.params.titulo}</Text>
         <Image style={styles.imagem} source={{ uri: routes.params.imagem }} />
-        <View style={{alignItems:'center', display:'flex', gap: 5, flexDirection:'row'}}>
-          <Stars
-            default={parseFloat(routes.params.nota)}
-            count={10}
-            half={true}
-            starSize={70}
-            disabled={true}  // impede que o usuário interaja
-            fullStar={<Icon name={'star'} style={[styles.myStarStyle]}/>}
-            emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
-            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
-          />
-
+        <View
+          style={{
+            alignItems: "center",
+            display: "flex",
+            gap: 5,
+            flexDirection: "row",
+          }}
+        >
+          <Icon name="star" style={styles.myStarStyle} />
           <Text style={styles.nota}>{routes.params.nota}/10</Text>
         </View>
- 
+
         <Text style={styles.descricao}>{routes.params.descricao}</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: "black",
-  },
+        <View style={styles.infoSection}>
+          <View style={styles.infoItem}>
+            <Ionicons name="film-outline" size={24} color="#FFD700" />
+            <Text style={styles.infoText}>Filme</Text>
+          </View>
+          <View style={styles.infoItem}>
+            <Ionicons name="time-outline" size={24} color="#FFD700" />
+            <Text style={styles.infoText}>120min</Text>
+          </View>
+          <View style={styles.infoItem}>
+            <Ionicons name="calendar-outline" size={24} color="#FFD700" />
+            <Text style={styles.infoText}>2024</Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
 
-  myStarStyle: {
-    fontSize: 16,
-    color: 'yellow',
-    backgroundColor: 'transparent',
-    textShadowRadius: 2,
-  },
-  myEmptyStarStyle: {
-    color: 'white',
-  },
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#121212",
+      paddingTop: 30,
+      paddingStart: 14,
+      paddingEnd: 14,
+    },
+    titulo: {
+      fontSize: 24,
+      fontWeight: "bold",
+      color: "#FFFFFF",
+      marginBottom: 14,
+    },
+    imagem: {
+      width: "100%",
+      height: 400,
+      borderRadius: 10,
+      marginBottom: 14,
+    },
+    myStarStyle: {
+      fontSize: 22,
+      color: "#E7A74e",
+    },
+    nota: {
+      fontSize: 20,
+      color: "#FFFFFF",
+      fontWeight: "bold",
+    },
+    descricao: {
+      fontSize: 18,
+      color: "#FFFFFF",
+      marginTop: 14,
+      lineHeight: 22,
+      textAlign: "justify",
+      marginHorizontal: 20,
+      marginBottom: 20,
+    },
 
-  imagem: {
-    width: "50%",
-    height: 250,
-    borderRadius: 12,
-    marginBottom: 12,
-  },
-  titulo: {
-    fontFamily: 'bold', 
-    fontSize: 28,
-    margin: 10,
-    color: 'white',
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  nota: {
-    fontSize: 16,
-    color: "white",
-  },
-  descricao: {
-    border: '1px solid grey',
-    margin: 6,
-    fontSize: 18,
-    color: "white",
-    padding: 20,
-    textAlign: 'justify',
-  },
-});
+    infoSection: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      marginHorizontal: 20,
+      marginBottom: 30,
+      padding: 20,
+      backgroundColor: "rgba(255,255,255,0.05)",
+      borderRadius: 16,
+      borderWidth: 1,
+      borderColor: "rgba(255, 255, 255, 0.1)",
+    },
+    infoItem: {
+      alignItems: "center",
+      gap: 8,
+    },
+    infoText: {
+      color: "rgba(255,255,255,0.8)",
+      fontSize: 12,
+      fontWeight: "500",
+    },
+  });
