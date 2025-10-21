@@ -1,4 +1,4 @@
-  import { View, Text, Image, StyleSheet } from "react-native";
+  import { View, Text, Image, StyleSheet, FlatList } from "react-native";
   import { useRoute } from "@react-navigation/native";
 
   import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -47,8 +47,10 @@
   }
 
   const styles = StyleSheet.create({
+    
     container: {
       flex: 1,
+      overflowY: 'scroll',
       backgroundColor: "#121212",
       paddingTop: 30,
       paddingStart: 14,
